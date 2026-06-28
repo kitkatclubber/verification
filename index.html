@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verify</title>
+</head>
+<body>
+  <h2>Verification</h2>
 
+  <input id="roblox" placeholder="Roblox Username">
+  <input id="discord" placeholder="Discord Username">
+  <input id="code" placeholder="Verification Code">
+
+  <button onclick="verify()">Verify</button>
+
+  <p id="status"></p>
+
+  <script>
+    async function verify() {
+      document.getElementById("status").innerText = "Verifying...";
+
+      const data = {
+        roblox: document.getElementById("roblox").value,
+        discord: document.getElementById("discord").value,
+        code: document.getElementById("code").value,
+        status: "verified"
+      };
+
+      await fetch("AIzaSyCB2T7mR5BUkYIdT3fKoMVzsyzEw1xhpU0", {
+        method: "POST",
+        body: JSON.stringify(data)
+      });
+
+      setTimeout(() => {
+        document.getElementById("status").innerText = "Successfully Verified";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
